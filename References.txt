@@ -1,0 +1,9 @@
+Datasets:
+	https://analyticsindiamag.com/10-question-answering-datasets-to-build-robust-chatbot-systems/
+	https://www.kaggle.com/grafstor/simple-dialogs-for-chatbot
+	https://www.kaggle.com/elvinagammed/chatbots-intent-recognition-dataset
+
+Lectures:
+	https://www.youtube.com/playlist?list=PL3FW7Lu3i5Jsnh1rnUwq_TcylNr7EkRe6
+	https://www.youtube.com/watch?v=fNxaJsNG3-s&list=PLQY2H8rRoyvzDbLUZkbudP-MFQZwNmU4S
+	
