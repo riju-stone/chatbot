@@ -18,6 +18,8 @@ In order to understand the concepts of **Seq2Seq** models or **Transformer** mod
 * [Unfolding RNNs Part II](http://suriyadeepan.github.io/2017-02-13-unfolding-rnn-2/ )
 * [Understanding LSTMs](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
 * [The Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
+* [Recurrent neural network based language model](http://www.fit.vutbr.cz/research/groups/speech/publi/2010/mikolov_interspeech2010_IS100722.pdf)
+* [Extensions of Recurrent Neural Network Language Model](http://www.fit.vutbr.cz/research/groups/speech/publi/2011/mikolov_icassp2011_5528.pdf)
 
 ## Sequence to Sequence Model
 
