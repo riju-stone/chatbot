@@ -45,6 +45,7 @@ The Transformer in NLP is a novel architecture that aims to solve sequence-to-se
 * [Self Attention](https://towardsdatascience.com/illustrated-self-attention-2d627e33b20a)
 * [Attention is all you Need](https://arxiv.org/pdf/1706.03762.pdf)
 * [Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
+* [Transformer](https://d2l.ai/chapter_attention-mechanisms/transformer.html)
 * [LSTM is dead. Long Live Transformers!](https://www.youtube.com/watch?v=S27pHKBEp30)
 * [Transformer Neural Networks](https://www.youtube.com/playlist?list=PLTl9hO2Oobd_bzXUpzKMKA3liq2kj6LfE)
 
