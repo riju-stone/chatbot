@@ -64,3 +64,32 @@ def rank_and_choose(tokenizer, model_reverse, utterance, query_encoding, candida
         return input_ids
 
     output_ids = _make_feature([last_utterance], EOS_token)
+
+    with T.no_grad():
+        original_output_ids = T.tensor(
+            output_ids).to('cuda').long().unsqueeze(0)
+        losses = []
+        for candidate in candidates:
+            input_ids = _make_feature([candidate], EOS_token)
+            input_ids = T.tensor(input_ids).to('cuda').long().unsqueeze(0)
+            output_ids_temp = T.empty_like(
+                input_ids).to('cuda').fill_(-1).long()
+            input_ids = T.cat([input_ids, original_output_ids], dim=-1)
+            output_ids = T.cat([output_ids_temp, original_output_ids], dim=-1)
+            loss, _, _ = model_reverse(input_ids, past=None, labels=output_ids)
+            losses.append(loss.item())
+
+    losses = np.asarray(losses, np.float32)
+    normed_MMI_scores = utils.normalize(1.0 - utils.normalize(losses))
+
+    quasi_probabilities = alpha * \
+        (normed_rank_scores + bias) + beta * normed_MMI_scores
+    candidates, quasi_probabilities, _ = top_candidates(
+        candidates, quasi_probabilities, top=3)
+    probabilities = utils.normalize(quasi_probabilities)
+
+    response = random_response(
+        candidates, conversation_history, p=probabilities)
+    id = original_candidates.index(response)
+
+    return response, id
