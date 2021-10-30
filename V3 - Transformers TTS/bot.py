@@ -4,7 +4,7 @@ import numpy as np
 
 from stt import speech_to_text
 from tts import text_to_speech
-from utils import conv_end, conv_end_res, failed_res, net_search_utility, time_uitility
+from utils import *
 
 if __name__ == "__main__":
     nlp = transformers.pipeline(
@@ -20,10 +20,10 @@ if __name__ == "__main__":
             res = np.random.choice(conv_end_res)
             processing = False
 
-        elif any(i in text for i in ["time", "date"]):
+        elif any(i in text for i in time_query):
             res = time_uitility()
 
-        elif any(i in text for i in ["define", "explain", "what can you tell me about"]):
+        elif any(i in text for i in search_query):
             res = net_search_utility(text)
 
         else:

@@ -5,3 +5,6 @@ gTTS
 pipwin
 pyaudio
 pyglet
+wikipedia
+tensorflow
+torch
