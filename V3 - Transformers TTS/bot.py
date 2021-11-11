@@ -1,4 +1,5 @@
 import os
+import sys
 import transformers
 import numpy as np
 
@@ -14,7 +15,10 @@ if __name__ == "__main__":
     processing = True
 
     while processing:
-        text = speech_to_text()
+        if(str(sys.argv[1]) == "--speech"):
+            text = speech_to_text()
+        elif(str(sys.argv[1]) == "--text"):
+            text = input("Write Something...\n")
 
         if any(i in text for i in conv_end):
             res = np.random.choice(conv_end_res)
@@ -26,6 +30,8 @@ if __name__ == "__main__":
         elif any(i in text for i in search_query):
             res = net_search_utility(text)
 
+        elif any(i in text for i in identity_query):
+            res = np.random.choice(identity_res)
         else:
             if text == "ERROR":
                 res = np.random.choice(failed_res)
