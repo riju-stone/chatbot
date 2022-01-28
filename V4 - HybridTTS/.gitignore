@@ -1,9 +1,0 @@
-# ignore all .pkl, .txt, .csv files
-*.pkl
-*.txt
-*.csv
-*.db
-*.pt
-*.bin
-*.h5
-*.yml
