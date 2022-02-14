@@ -12,9 +12,9 @@ if __name__ == "__main__":
         "conversational", model="facebook/blenderbot_small-90M")
     os.environ["TOKENIZERS_PARALLELISM"] = "true"
 
-    processing = True
+    converse = True
 
-    while processing:
+    while converse:
         if(str(sys.argv[1]) == "--speech"):
             text = speech_to_text()
         elif(str(sys.argv[1]) == "--text"):
@@ -22,13 +22,16 @@ if __name__ == "__main__":
 
         if any(i in text for i in conv_end):
             res = np.random.choice(conv_end_res)
-            processing = False
+            converse = False
 
         elif any(i in text for i in time_query):
             res = time_uitility()
 
         elif any(i in text for i in search_query):
             res = net_search_utility(text)
+
+        elif any(i in text for i in joke_query):
+            res = joke_utility()
 
         elif any(i in text for i in identity_query):
             res = np.random.choice(identity_res)
