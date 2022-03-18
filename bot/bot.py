@@ -9,7 +9,7 @@ from utils import *
 
 if __name__ == "__main__":
     nlp = transformers.pipeline(
-        "conversational", model="facebook/blenderbot_small-90M")
+        "conversational", model="microsoft/DialoGPT-large")
     os.environ["TOKENIZERS_PARALLELISM"] = "true"
 
     converse = True
@@ -32,6 +32,9 @@ if __name__ == "__main__":
 
         elif any(i in text for i in joke_query):
             res = joke_utility()
+
+        elif any(i in text for i in eval_query):
+            res = evaluate_exp(text)
 
         elif any(i in text for i in identity_query):
             res = np.random.choice(identity_res)

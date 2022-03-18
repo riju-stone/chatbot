@@ -2,10 +2,7 @@ numpy
 transformers
 SpeechRecognition
 gTTS
-pipwin
-pyaudio
 pyglet
 wikipedia
 tensorflow
 torch
-yake
