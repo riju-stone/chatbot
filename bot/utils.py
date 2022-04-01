@@ -1,37 +1,45 @@
 import datetime
-from numpy.core.numeric import identity
-import wikipedia
+import webbrowser
+import wikipediaapi
 import pyjokes
-import re
-
-identity_query = ["who are you", "your name"]
-identity_res = ["My name is LOCA or the Least Obfuscated Chatbot Aplication",
-                "I'm the Least Obfuscated Chatbot Aplication or you can call me LOCA"]
-conv_end = ["goodbye", "bye", "see you", "tata", "see you"]
-conv_end_res = ["Tata", "Have a good day", "Bye",
-                "Goodbye", "Hope to meet soon", "Peace out!"]
-failed_res = ["I beg your pardon.", "Please repeat.", "Sorry I couldn't get you.",
-              "Can you speak up ?", "I didn't hear you. Sorry say it again."]
-search_query = ["define", "explain"]
-time_query = ["the time", "the date"]
-joke_query = ["tell me a joke", "tell me another joke"]
-eval_query = ["solve expression", "evaluate expression", "calculate expression"]
+from googlesearch import search
+from tts import text_to_speech
 
 
 def time_uitility():
     return "Right now it's {} and today it's {}".format(datetime.datetime.now().strftime("%H:%M:%S"), datetime.date.today())
 
 
-def net_search_utility(search_text):
-
-    query = ' '.join(search_text.split()[1:])
-
+def play_song_video(query):
+    url = "https://www.youtube.com/results?search_query={}".format(query)
     try:
-        res = wikipedia.summary(query, sentences=2)
+        res = "Let me see"
+        webbrowser.open_new_tab(url)
     except:
-        res = "Sorry Couldn't find anything with '{}'".format(query)
-
+        res = "Sorry could not find anything on Youtube"
     return res
+
+
+def search_google(query):
+    url = "https://www.google.com/search?q={}".format(query)
+    try:
+        webbrowser.open_new_tab(url)
+    except:
+        text_to_speech("Bot --> Sorry could not find anything on Google")
+
+
+def net_search_utility(search_text):
+    query = ' '.join(search_text.split()[1:])
+    wiki = wikipediaapi.Wikipedia('en')
+    page = wiki.page(query)
+    res = page.summary[0: 200]
+
+    if len(res) != 0:
+        return res
+    else:
+        search_google(query)
+        return "Sorry I do not know much about {}, but let me search and see what I can find...".format(
+            query)
 
 
 def joke_utility():
@@ -40,9 +48,7 @@ def joke_utility():
 
 def evaluate_exp(search_text):
     exp = ' '.join(search_text.split()[2:])
-
     try:
         return "The answer is {}".format(eval(exp))
     except:
         return "Sorry I couldn't evaluate the expression {}".format(exp)
-
