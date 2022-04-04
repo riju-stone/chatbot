@@ -3,10 +3,10 @@ import sys
 import transformers
 import numpy as np
 
-from stt import speech_to_text
-from tts import text_to_speech
-from utils import *
-from queries import *
+from core.stt import speech_to_text
+from core.tts import text_to_speech
+from utils.utils import *
+from local.queries import *
 
 if __name__ == "__main__":
     nlp = transformers.pipeline(
@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
         elif any(i in text for i in identity_query):
             res = np.random.choice(identity_res)
-        
+
         elif any(i in text for i in youtube_query):
             res = play_song_video(text)
 

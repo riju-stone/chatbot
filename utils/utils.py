@@ -3,7 +3,7 @@ import webbrowser
 import wikipediaapi
 import pyjokes
 from googlesearch import search
-from tts import text_to_speech
+from core.tts import text_to_speech
 
 
 def time_uitility():
