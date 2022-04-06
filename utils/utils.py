@@ -11,6 +11,7 @@ def time_uitility():
 
 
 def play_song_video(query):
+    query = ' '.join(query.split()[3:])
     url = "https://www.youtube.com/results?search_query={}".format(query)
     try:
         res = "Let me see"
@@ -25,7 +26,7 @@ def search_google(query):
     try:
         webbrowser.open_new_tab(url)
     except:
-        text_to_speech("Bot --> Sorry could not find anything on Google")
+        text_to_speech("Sorry could not find anything on Google")
 
 
 def net_search_utility(search_text):

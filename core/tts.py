@@ -8,7 +8,6 @@ filename = 'speech.mp3'
 
 
 def text_to_speech(text):
-  
     st.text_area("Bot :", value=text, height=200, max_chars=None, key=None)
 
     tts = gTTS(text=text, lang="en", slow=False)

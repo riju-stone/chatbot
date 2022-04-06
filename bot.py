@@ -2,7 +2,6 @@ import os
 import sys
 import transformers
 import numpy as np
-import random
 
 from core.stt import speech_to_text
 from core.tts import text_to_speech
@@ -23,12 +22,12 @@ if __name__ == "__main__":
 
         converse = True
 
-        text = st.text_input("You: ", key="user_input")
-
         while converse:
             # if(str(sys.argv[1]) == "--speech"):
             #     text = speech_to_text()
             # elif(str(sys.argv[1]) == "--text"):
+
+            text = st.text_input("User: ", key="user_input")
 
             if any(i in text for i in conv_end):
                 res = np.random.choice(conv_end_res)
@@ -51,9 +50,7 @@ if __name__ == "__main__":
 
             elif any(i in text for i in youtube_query):
                 res = play_song_video(text)
-
             else:
-
                 if text == "ERROR":
                     res = np.random.choice(failed_res)
                 else:
@@ -63,6 +60,6 @@ if __name__ == "__main__":
                         res = str(chat)
                         res = res[res.find("bot >>")+6:].strip()
 
-                text_to_speech(res)
+            text_to_speech(res)
     except:
         pass

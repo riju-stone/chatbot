@@ -6,7 +6,7 @@ conv_end_res = ["Tata", "Have a good day", "Bye",
                 "Goodbye", "Hope to meet soon", "Peace out!"]
 failed_res = ["I beg your pardon.", "Please repeat.", "Sorry I couldn't get you.",
               "Can you speak up ?", "I didn't hear you. Sorry say it again."]
-search_query = ["define", "explain", "who is"]
+search_query = ["define", "explain"]
 time_query = ["the time", "the date"]
 joke_query = ["tell me a joke", "tell me another joke"]
 eval_query = ["solve expression",
