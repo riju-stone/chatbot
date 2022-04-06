@@ -32,7 +32,7 @@ def net_search_utility(search_text):
     query = ' '.join(search_text.split()[1:])
     wiki = wikipediaapi.Wikipedia('en')
     page = wiki.page(query)
-    res = page.summary[0: 200]
+    res = page.summary[0: 300]
 
     if len(res) != 0:
         return res
