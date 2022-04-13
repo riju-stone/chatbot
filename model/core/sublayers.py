@@ -17,7 +17,6 @@ def attention(query, key, value, d_k, mask=None, dropout=None):
 
     if dropout is not None:
         score_mat = dropout(score_mat)
-
     output = torch.matmul(score_mat, value)
 
     return output
