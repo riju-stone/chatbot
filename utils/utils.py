@@ -2,7 +2,6 @@ import datetime
 import webbrowser
 import wikipediaapi
 import pyjokes
-from googlesearch import search
 from core.tts import text_to_speech
 
 
@@ -29,11 +28,16 @@ def search_google(query):
         text_to_speech("Sorry could not find anything on Google")
 
 
-def net_search_utility(search_text):
-    query = ' '.join(search_text.split()[1:])
+def net_search_utility(search_text, factor="normal"):
+
+    if factor == "normal":
+        query = ' '.join(search_text.split()[1:])
+    elif factor == "name":
+        query = ' '.join(search_text.split()[2:])
+
     wiki = wikipediaapi.Wikipedia('en')
     page = wiki.page(query)
-    res = page.summary[0: 300]
+    res = page.summary[: 300]
 
     if len(res) != 0:
         return res

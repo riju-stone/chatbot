@@ -3,7 +3,7 @@ import sys
 import transformers
 import numpy as np
 
-from core.stt import speech_to_text
+# from core.stt import speech_to_text
 from core.tts import text_to_speech
 from utils.utils import *
 from local.queries import *
@@ -23,11 +23,9 @@ if __name__ == "__main__":
         converse = True
 
         while converse:
-            # if(str(sys.argv[1]) == "--speech"):
-            #     text = speech_to_text()
-            # elif(str(sys.argv[1]) == "--text"):
 
             text = st.text_input("User: ", key="user_input")
+            text = text.lower()
 
             if any(i in text for i in conv_end):
                 res = np.random.choice(conv_end_res)
@@ -38,6 +36,9 @@ if __name__ == "__main__":
 
             elif any(i in text for i in search_query):
                 res = net_search_utility(text)
+
+            elif any(i in text for i in name_search_query):
+                res = net_search_utility(text, factor="name")
 
             elif any(i in text for i in joke_query):
                 res = joke_utility()
